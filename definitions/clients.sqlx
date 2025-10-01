@@ -1,0 +1,2 @@
+config{type: "table", schema: "ecommerce_dataset", name: "clients"}
+SELECT * FROM `quick-filament-472410-q6.ecommerce_dataset.clients`
