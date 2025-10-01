@@ -1,7 +1,10 @@
 -- Supponiamo di voler creare una tabella con gli ordini mensili per categoria di prodotto:
 config {type: "table" }
 SELECT
-    p.category
-
-FROM $ref{("products")} AS p
-JOIN $ref{("orders")} AS o ON p.name = o.product
+    p.category,
+    EXTRACT(YEAR FROM o.order_date) AS year,
+    EXTRACT(MONTH FROM o.order_date) AS month,
+    SUM(o.price) AS monthly_revenue
+FROM $ref{("orders")} o
+JOIN $ref{("products")} p ON o.product = p.name
+GROUP BY 1,2,3
