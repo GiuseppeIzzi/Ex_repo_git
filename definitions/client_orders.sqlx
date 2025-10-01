@@ -1,4 +1,8 @@
-config {type: "table"}
+config {
+    type: "table",
+    name: "client_orders",
+    schema: "ecommerce_dataset"
+    }
 SELECT
     c.client_id,
     c.name AS client_name,
